@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { useCart } from '../contexts/CartContext';
 import { getApiUrl } from '../utils/api';
 import './loja.css';
@@ -73,7 +74,7 @@ export default function Loja() {
             {produtos.map((produto) => (
               <div key={produto.id} className="produto-card card">
                 <div className="produto-imagem">
-                  <img src={produto.img} alt={produto.nome} />
+                  <Image src={produto.img} alt={produto.nome} width={300} height={300} />
                 </div>
                 <div className="produto-info">
                   <h3>{produto.nome}</h3>
@@ -113,7 +114,7 @@ export default function Loja() {
                 <div className="carrinho-itens">
                   {cart.map((item) => (
                     <div key={item.id} className="carrinho-item">
-                      <img src={item.img} alt={item.nome} />
+                      <Image src={item.img} alt={item.nome} width={80} height={80} />
                       <div className="item-info">
                         <h4>{item.nome}</h4>
                         <p>R$ {parseFloat(item.preco).toFixed(2)}</p>

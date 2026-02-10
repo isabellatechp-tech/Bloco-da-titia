@@ -101,14 +101,14 @@ export default function Fotos() {
           {/* Galeria */}
           {fotosFiltradas.length === 0 ? (
             <div className="sem-fotos">
-              <p>Nenhuma foto encontrada para "{filtro}"</p>
+              <p>Nenhuma foto encontrada para &quot;{filtro}&quot;</p>
             </div>
           ) : (
             <>
               <div className="fotos-info">
                 <p>
                   {fotosFiltradas.length} {fotosFiltradas.length === 1 ? 'foto encontrada' : 'fotos encontradas'}
-                  {filtro && ` para "${filtro}"`}
+                  {filtro && ` para &quot;${filtro}&quot;`}
                 </p>
               </div>
 
@@ -116,6 +116,7 @@ export default function Fotos() {
                 {fotosFiltradas.map((foto) => (
                   <div key={foto.id} className="foto-card card">
                     <div className="foto-imagem">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src={foto.foto} alt={foto.evento} />
                       <div className="foto-overlay">
                         <span className="foto-evento">{foto.evento}</span>
