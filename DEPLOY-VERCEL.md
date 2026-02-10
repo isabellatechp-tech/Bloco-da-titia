@@ -113,14 +113,26 @@ O Vercel precisa saber que o projeto Next.js está na pasta `frontend`:
 **No painel do Vercel:**
 - **Root Directory:** `frontend`
 
-**Ou via `vercel.json` na raiz:**
+**Ou via `vercel.json` na raiz (já configurado):**
 ```json
 {
-  "buildCommand": "cd frontend && npm install && npm run build",
-  "outputDirectory": "frontend/.next",
-  "installCommand": "cd frontend && npm install"
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "frontend/$1"
+    }
+  ]
 }
 ```
+
+**Nota:** O arquivo `vercel.json` já está configurado no repositório. Você só precisa configurar o **Root Directory** como `frontend` no painel do Vercel.
 
 ### Variáveis de Ambiente
 

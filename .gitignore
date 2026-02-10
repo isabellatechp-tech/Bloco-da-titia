@@ -51,3 +51,6 @@ backend/*.log
 # Mas excluir backups
 *.md.bak
 
+# Vercel
+.vercel
+

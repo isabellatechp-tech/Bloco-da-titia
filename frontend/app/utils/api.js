@@ -3,14 +3,11 @@
  * Funciona tanto em desenvolvimento quanto em produção
  */
 export function getApiUrl() {
-  // Em produção (Vercel), usa a variável de ambiente
-  if (typeof window !== 'undefined') {
-    // Client-side: usa a URL da API definida ou fallback
-    return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-  }
-  
-  // Server-side: usa a URL da API ou localhost
-  return process.env.API_URL || process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+  // Sempre usa a variável de ambiente pública (disponível no client e server)
+  // Em desenvolvimento: http://localhost:3001
+  // Em produção: URL configurada no Vercel (NEXT_PUBLIC_API_URL)
+  // Se não configurada, usa dados mockados (fallback já implementado nas páginas)
+  return process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 }
 
 /**
