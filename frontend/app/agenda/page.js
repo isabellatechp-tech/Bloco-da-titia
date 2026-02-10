@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
+import { getApiUrl } from '../utils/api';
 import './agenda.css';
 
 export default function Agenda() {
@@ -15,7 +16,8 @@ export default function Agenda() {
   const fetchEventos = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3001/api/agenda');
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/agenda`);
       if (!response.ok) throw new Error('Erro ao buscar eventos');
       const data = await response.json();
       setEventos(data.map(evento => ({

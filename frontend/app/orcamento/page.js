@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import { getApiUrl } from '../utils/api';
 import './orcamento.css';
 
 export default function Orcamento() {
@@ -75,7 +76,8 @@ export default function Orcamento() {
     setSucesso(false);
 
     try {
-      const response = await fetch('http://localhost:3001/api/orcamento', {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/orcamento`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

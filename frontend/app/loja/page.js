@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { useCart } from '../contexts/CartContext';
+import { getApiUrl } from '../utils/api';
 import './loja.css';
 
 export default function Loja() {
@@ -17,7 +18,8 @@ export default function Loja() {
   const fetchProdutos = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3001/api/loja');
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/loja`);
       if (!response.ok) throw new Error('Erro ao buscar produtos');
       const data = await response.json();
       setProdutos(data);

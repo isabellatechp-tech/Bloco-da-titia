@@ -1,5 +1,6 @@
 "use client";
 import { useState } from 'react';
+import { getApiUrl } from '../utils/api';
 import './patrocinadores.css';
 
 export default function Patrocinadores() {
@@ -66,7 +67,8 @@ export default function Patrocinadores() {
     setSucesso(false);
 
     try {
-      const response = await fetch('http://localhost:3001/api/patrocinadores', {
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/patrocinadores`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

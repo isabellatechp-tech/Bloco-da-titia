@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from 'react';
+import { getApiUrl } from '../utils/api';
 import './fotos.css';
 
 export default function Fotos() {
@@ -15,7 +16,8 @@ export default function Fotos() {
   const fetchFotos = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3001/api/fotos');
+      const apiUrl = getApiUrl();
+      const response = await fetch(`${apiUrl}/api/fotos`);
       if (!response.ok) throw new Error('Erro ao buscar fotos');
       const data = await response.json();
       setFotos(data);
